@@ -1,12 +1,21 @@
-import {useState} from 'react'
+import {useEffect, useState} from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import {getProductList} from "./network/api/sysApi.ts";
 import {isSuccess} from "./network/response/BLResponse.ts";
+import VConsole from 'vconsole';
 
 function App() {
     const [count, setCount] = useState(0)
+
+    useEffect(() => {
+        const vConsole = new VConsole();
+
+        return () => {
+            vConsole.destroy()
+        }
+    }, [])
 
     const jump2Page1 = () => {
         console.log('jump2Page1')
