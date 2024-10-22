@@ -48,3 +48,26 @@ export default tseslint.config({
   },
 })
 ```
+
+```
+// 安装指定版本的node
+nvm install 16.19.0
+
+// 查看已安装的node.js 版本
+nvm ls
+
+// 切换指定版本
+nvm use 16.19.0
+
+// 切换到最新版本
+nvm use node 
+
+// 切换到系统版本
+nmv use system
+
+// 查看node.js版本
+node -v
+
+
+
+```
