@@ -3,6 +3,8 @@ import './App.css'
 import VConsole from 'vconsole';
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import {routers} from "./routes/routers.ts";
+import {Provider} from "react-redux";
+import store from "./redux/store.ts";
 
 function App() {
     // const [count, setCount] = useState(0)
@@ -30,11 +32,13 @@ function App() {
 
     return (
         <>
-            <BrowserRouter>
-                <Routes>
-                    {routers.map(routerProps => <Route key={routerProps.path} {...routerProps}/>)}
-                </Routes>
-            </BrowserRouter>
+            <Provider store={store}>
+                <BrowserRouter>
+                    <Routes>
+                        {routers.map(routerProps => <Route key={routerProps.path} {...routerProps}/>)}
+                    </Routes>
+                </BrowserRouter>
+            </Provider>
 
 
             {/*<div>*/}
