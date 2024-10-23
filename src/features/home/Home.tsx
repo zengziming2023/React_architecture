@@ -5,7 +5,7 @@ import {RouterNames} from "../../routes/routers.ts";
 import './home.less'
 import {useDispatch, useSelector} from "react-redux";
 import {AppDispatch, RootState} from "../../redux/store.ts";
-import {increment} from "../../redux/counterSlice.ts";
+import {incrementByAmount} from "../../redux/counterSlice.ts";
 
 const Home = () => {
     const reduxCount = useSelector((state: RootState) => state.counter.count)
@@ -27,7 +27,7 @@ const Home = () => {
     const jump2AboutPage = () => {
         console.log("jump2AboutPage")
         // setCount(count + 1);
-        dispatch(increment())
+        dispatch(incrementByAmount(2))
         setTimeout(() => {
             navigate(RouterNames.About)
         }, 500)
