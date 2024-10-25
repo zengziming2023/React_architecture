@@ -1,18 +1,21 @@
 import {useNavigate} from "react-router-dom";
 
-import {useEffect, useState} from "react";
+import {useEffect} from "react";
 import {RouterNames} from "../../routes/routers.ts";
 import './home.less'
 import {useDispatch, useSelector} from "react-redux";
 import {AppDispatch, RootState} from "../../redux/store.ts";
 import {incrementByAmount} from "../../redux/counterSlice.ts";
 import {Button, Input, Toast} from "antd-mobile";
+import {useSessionStorage} from "../../utils/cache.ts";
 
 const Home = () => {
     const reduxCount = useSelector((state: RootState) => state.counter.count)
     // const isAuthenticated = useSelector((state: RootState) => state.auth.isAuthenticated);
     const dispatch = useDispatch<AppDispatch>();
-    const [value, setValue] = useState('')
+    // const [value, setValue] = useState('')
+    // const [value, setValue, _] = useLocalStorage("key_input_value", '')
+    const [value, setValue] = useSessionStorage("key_session_input", '')
 
     // const [count, setCount] = useState(0);
     const navigate = useNavigate()
