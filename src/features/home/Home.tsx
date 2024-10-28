@@ -6,8 +6,10 @@ import './home.less'
 import {useDispatch, useSelector} from "react-redux";
 import {AppDispatch, RootState} from "../../redux/store.ts";
 import {incrementByAmount} from "../../redux/counterSlice.ts";
-import {Button, Input, Toast} from "antd-mobile";
+import {Button, Image, Input, Toast} from "antd-mobile";
 import {useSessionStorage} from "../../utils/cache.ts";
+import LazyLoad from 'react-lazyload';
+
 
 const Home = () => {
     const reduxCount = useSelector((state: RootState) => state.counter.count)
@@ -49,6 +51,10 @@ const Home = () => {
             <Input className='input' placeholder='Enter something' value={value} onChange={setValue} clearable={true}/>
             <Button className={'button'} color={"primary"} size={"large"} onClick={handleClick}>Show
                 Toast</Button>
+            <LazyLoad>
+                <Image src={"https://www.baidu.com/img/PCtm_d9c8750bed0b3c7d089fa7d55720d6cf.png"} alt={'test.png'}/>
+            </LazyLoad>
+
         </div>
     )
 }
