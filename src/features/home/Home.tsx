@@ -46,7 +46,7 @@ const Home = () => {
 
     return (
         <div className='home'>
-            <h2>Home</h2>
+            <h2 className='title'>Home</h2>
             <button onClick={jump2AboutPage}>Jump 2 About page: {reduxCount}</button>
             <Input className='input' placeholder='Enter something' value={value} onChange={setValue} clearable={true}/>
             <Button className={'button'} color={"primary"} size={"large"} onClick={handleClick}>Show
