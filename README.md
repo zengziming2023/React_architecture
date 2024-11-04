@@ -92,5 +92,11 @@ brew services restart nginx     // 重启
 sudo nginx -t  # 检查配置文件
 sudo nginx -s reload  # 重新加载配置
 
+// 配置完成后
+chmod +x react_deploy.sh
+./react_deploy.sh   // 会自动打包 + copy 文件到nginx 指定目标下，并重启nginx.
+
+// 访问 
+localhost:3001/
 
 ```
