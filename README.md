@@ -67,7 +67,30 @@ nmv use system
 
 // 查看node.js版本
 node -v
+```
 
+```angular2html
+// 打包
+yarn build
+或者 
+npm run build
+
+// 本地测试部署
+npx serve -s dist -l 3003
+
+// 使用Nginx 来部署
+brew install nginx  // 安装nginx
+
+brew services start nginx   // 启动 nginx
+
+brew services stop nginx    // 停止 nginx
+
+brew services restart nginx     // 重启
+// /opt/homebrew/etc/nginx/nginx.conf  --- 修改配置文件，增加端口号监听，及资源配置
+// 资源统一 放在 html 目录下
+
+sudo nginx -t  # 检查配置文件
+sudo nginx -s reload  # 重新加载配置
 
 
 ```

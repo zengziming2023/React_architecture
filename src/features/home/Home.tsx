@@ -43,18 +43,22 @@ const Home = () => {
         Toast.show(`You enter: ${value}`)
     }
 
+    const jump2AndtDemoPage = () => {
+        navigate(RouterNames.AndtDemo)
+    }
+
 
     return (
         <div className='home'>
             <h2 className='title'>Home</h2>
             <button onClick={jump2AboutPage}>Jump 2 About page: {reduxCount}</button>
+            <Button onClick={jump2AndtDemoPage}>jump 2 andt demo page.</Button>
             <Input className='input' placeholder='Enter something' value={value} onChange={setValue} clearable={true}/>
             <Button className={'button'} color={"primary"} size={"large"} onClick={handleClick}>Show
                 Toast</Button>
             <LazyLoad>
                 <Image src={"https://www.baidu.com/img/PCtm_d9c8750bed0b3c7d089fa7d55720d6cf.png"} alt={'test.png'}/>
             </LazyLoad>
-
         </div>
     )
 }
