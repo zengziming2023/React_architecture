@@ -2,11 +2,13 @@ import {RouteProps} from "react-router-dom";
 import Home from "../features/home/Home.tsx";
 import About from "../features/about/About.tsx";
 import AndtDemo from "../features/andtDemo/AndtDemo.tsx";
+import AHooksDemo from "../features/ahooksDemo/AHooksDemo.tsx";
 
 export enum RouterNames {
     Home = "/",
     About = "/about",
     AndtDemo = "/andt-demo",
+    AHooksDemo = '/ahooks-demo',
 }
 
 export const routers: RouteProps[] = [{
@@ -20,5 +22,9 @@ export const routers: RouteProps[] = [{
     {
         path: RouterNames.AndtDemo,
         Component: AndtDemo
+    },
+    {
+        path: RouterNames.AHooksDemo,
+        Component: AHooksDemo
     }
 ]
