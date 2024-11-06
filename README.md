@@ -94,9 +94,30 @@ sudo nginx -s reload  # 重新加载配置
 
 // 配置完成后
 chmod +x react_deploy.sh
-./react_deploy.sh   // 会自动打包 + copy 文件到nginx 指定目标下，并重启nginx.
+./react_deploy_nginx.sh   // 会自动打包 + copy 文件到nginx 指定目标下，并重启nginx.
 
 // 访问 
+localhost:8080/         // 查看nginx 是否正常启动
+
 localhost:3001/
 
+```
+
+```
+
+docker build -t react_docker_img .
+
+docker run -p 3001:3001 react_docker_img
+
+localhost:3001/
+
+docker ps       // 查看 container-id
+
+docker exec -it <container-id> /bin/sh  // 进入容器
+docker exec -it 69f0c92f117b /bin/sh 
+
+cat /etc/nginx/nginx.conf       // 查看配置文件 
+
+docker stop <container-id>     // 停止窗口
+docker restart <container-id>   // 重启窗口
 ```

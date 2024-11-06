@@ -51,6 +51,10 @@ const Home = () => {
         navigate(RouterNames.AHooksDemo)
     }
 
+    const jump2TabbarsDemoPage = () => {
+        navigate(RouterNames.TabBarsDemo)
+    }
+
 
     return (
         <div className='home'>
@@ -58,6 +62,7 @@ const Home = () => {
             <button onClick={jump2AboutPage}>Jump 2 About page: {reduxCount}</button>
             <Button onClick={jump2AndtDemoPage}>jump 2 andt demo page.</Button>
             <Button onClick={jump2AHooksDemoPage}>jump 2 ahooks demo page.</Button>
+            <Button onClick={jump2TabbarsDemoPage}>jump 2 andt tabbars demo page.</Button>
             <Input className='input' placeholder='Enter something' value={value} onChange={setValue} clearable={true}/>
             <Button className={'button'} color={"primary"} size={"large"} onClick={handleClick}>Show
                 Toast</Button>
