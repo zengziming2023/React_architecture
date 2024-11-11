@@ -4,13 +4,15 @@ import About from "../features/about/About.tsx";
 import AndtDemo from "../features/andtDemo/AndtDemo.tsx";
 import AHooksDemo from "../features/ahooksDemo/AHooksDemo.tsx";
 import TabBarDemo from "../features/andtDemo/TabBarsDemo.tsx";
+import TabsDemo from "../features/andtDemo/TabsDemo.tsx";
 
 export enum RouterNames {
     Home = "/",
     About = "/about",
     AndtDemo = "/andt-demo",
     AHooksDemo = '/ahooks-demo',
-    TabBarsDemo = "/tab-bars-demo"
+    TabBarsDemo = "/tab-bars-demo",
+    TabsDemo = "/tabs-demo"
 }
 
 export const routers: RouteProps[] = [{
@@ -32,5 +34,9 @@ export const routers: RouteProps[] = [{
     {
         path: RouterNames.TabBarsDemo,
         Component: TabBarDemo
+    },
+    {
+        path: RouterNames.TabsDemo,
+        Component: TabsDemo
     }
 ]
