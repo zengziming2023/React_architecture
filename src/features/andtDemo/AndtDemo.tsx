@@ -2,14 +2,14 @@ import {
     AutoCenter, Avatar,
     Badge,
     Button,
-    CapsuleTabs,
+    CapsuleTabs, Card,
     Divider,
     DotLoading,
     Grid,
     NavBar,
     SafeArea,
     Space,
-    TabBar
+    TabBar, Toast
 } from "antd-mobile";
 import "./andt_demo.less"
 import {useNavigate} from "react-router-dom";
@@ -207,6 +207,8 @@ const AndtDemo = () => {
                 <Avatar src={demoAvatarImages[3]} />
                 <Avatar src={""} />
             </Space>
+
+            <Card title={"card title"} onClick={()=>{Toast.show("click card.")}}>card content.</Card>
 
             <SafeArea position={"bottom"}/>
         </div>
