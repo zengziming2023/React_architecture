@@ -1,15 +1,19 @@
 import {
-    AutoCenter, Avatar,
+    AutoCenter,
+    Avatar,
     Badge,
     Button,
-    CapsuleTabs, Card,
+    CapsuleTabs,
+    Card,
+    Collapse,
     Divider,
     DotLoading,
     Grid,
     NavBar,
     SafeArea,
     Space,
-    TabBar, Toast
+    TabBar,
+    Toast
 } from "antd-mobile";
 import "./andt_demo.less"
 import {useNavigate} from "react-router-dom";
@@ -26,11 +30,13 @@ import {sleep} from "antd-mobile/es/utils/sleep";
 import {GridItem} from "antd-mobile/es/components/grid/grid";
 import {useState} from "react";
 import {TabBarItem} from "antd-mobile/es/components/tab-bar/tab-bar";
+import {CollapsePanel} from "antd-mobile/es/components/collapse/collapse";
 
 
 const AndtDemo = () => {
     const navigate = useNavigate();
     const [activeKey, setActiveKey] = useState('todo')
+    const [activeColKey, setActiveColKey] = useState("1")
 
     const goBack = () => {
         navigate(-1)
@@ -201,14 +207,31 @@ const AndtDemo = () => {
             </TabBar>
 
             <Space className={"avatar"} wrap={true}>
-                <Avatar className={"avatar-item"} src={demoAvatarImages[0]} />
-                <Avatar src={demoAvatarImages[1]} />
-                <Avatar src={demoAvatarImages[2]} />
-                <Avatar src={demoAvatarImages[3]} />
-                <Avatar src={""} />
+                <Avatar className={"avatar-item"} src={demoAvatarImages[0]}/>
+                <Avatar src={demoAvatarImages[1]}/>
+                <Avatar src={demoAvatarImages[2]}/>
+                <Avatar src={demoAvatarImages[3]}/>
+                <Avatar src={""}/>
             </Space>
 
-            <Card title={"card title"} onClick={()=>{Toast.show("click card.")}}>card content.</Card>
+            <Card title={"card title"} onClick={() => {
+                Toast.show("click card.")
+            }}>card content.</Card>
+
+            <Collapse activeKey={activeColKey} accordion={true} onChange={(key) => {
+                setActiveColKey(key ?? "")
+            }}>
+                <CollapsePanel key={"1"} title={"First"}>
+                    First Detail
+                </CollapsePanel>
+                <CollapsePanel key={"2"} title={"Second"}>
+                    Second Detail
+                </CollapsePanel>
+                <CollapsePanel key={"3"} title={"Third"}>
+                    Third Detail
+                </CollapsePanel>
+            </Collapse>
+
 
             <SafeArea position={"bottom"}/>
         </div>
