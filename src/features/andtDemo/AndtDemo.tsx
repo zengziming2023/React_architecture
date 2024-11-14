@@ -8,6 +8,7 @@ import {
     Collapse,
     Divider,
     DotLoading,
+    Ellipsis,
     Grid,
     NavBar,
     SafeArea,
@@ -19,11 +20,13 @@ import "./andt_demo.less"
 import {useNavigate} from "react-router-dom";
 import {
     AppOutline,
+    DownOutline,
     MessageFill,
     MessageOutline,
     MoreOutline,
     SearchOutline,
     UnorderedListOutline,
+    UpOutline,
     UserOutline
 } from 'antd-mobile-icons'
 import {sleep} from "antd-mobile/es/utils/sleep";
@@ -80,6 +83,9 @@ const AndtDemo = () => {
         'https://images.unsplash.com/photo-1542624937-8d1e9f53c1b9?ixlib=rb-1.2.1&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&ixid=eyJhcHBfaWQiOjE3Nzg0fQ',
         'https://images.unsplash.com/photo-1546967191-fdfb13ed6b1e?ixlib=rb-1.2.1&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&ixid=eyJhcHBfaWQiOjE3Nzg0fQ',
     ]
+
+    const content =
+        '蚂蚁的企业级产品是一个庞大且复杂的体系。这类产品不仅量级巨大且功能复杂，而且变动和并发频繁，常常需要设计与开发能够快速的做出响应。同时这类产品中有存在很多类似的页面以及组件，可以通过抽象得到一些稳定且高复用性的内容。蚂蚁的企业级产品是一个庞大且复杂的体系。这类产品不仅量级巨大且功能复杂，而且变动和并发频繁，常常需要设计与开发能够快速的做出响应。同时这类产品中有存在很多类似的页面以及组件，可以通过抽象得到一些稳定且高复用性的内容。'
 
     return (
         <div className="andtDemo">
@@ -231,6 +237,18 @@ const AndtDemo = () => {
                     Third Detail
                 </CollapsePanel>
             </Collapse>
+
+            <div>
+                <Ellipsis content={content} direction={"end"} expandText={<>
+                    展开
+                    <DownOutline/>
+                </>} collapseText={<>
+                    收起
+                    <UpOutline/></>}/>
+                <Ellipsis content={content} direction={"start"}/>
+                <Ellipsis content={content} direction={"middle"}/>
+                <Ellipsis content={content} rows={2} direction={"end"}/>
+            </div>
 
 
             <SafeArea position={"bottom"}/>
