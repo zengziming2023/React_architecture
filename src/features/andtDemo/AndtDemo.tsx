@@ -245,7 +245,12 @@ const AndtDemo = () => {
                 </>} collapseText={<>
                     收起
                     <UpOutline/></>}/>
-                <Ellipsis content={content} direction={"start"}/>
+                <Ellipsis content={content} direction={"start"} expandText={<>
+                    展开
+                    <DownOutline/>
+                </>} collapseText={<>
+                    收起
+                    <UpOutline/></>}/>
                 <Ellipsis content={content} direction={"middle"}/>
                 <Ellipsis content={content} rows={2} direction={"end"}/>
             </div>
