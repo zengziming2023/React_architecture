@@ -9,9 +9,9 @@ import {
     Divider,
     DotLoading,
     Ellipsis,
-    FloatingPanel,
     Grid,
-    List,
+    Image,
+    ImageViewer,
     NavBar,
     SafeArea,
     Space,
@@ -36,13 +36,15 @@ import {GridItem} from "antd-mobile/es/components/grid/grid";
 import {useState} from "react";
 import {TabBarItem} from "antd-mobile/es/components/tab-bar/tab-bar";
 import {CollapsePanel} from "antd-mobile/es/components/collapse/collapse";
-import {ListItem} from "antd-mobile/es/components/list/list-item";
 
 
 const AndtDemo = () => {
     const navigate = useNavigate();
     const [activeKey, setActiveKey] = useState('todo')
     const [activeColKey, setActiveColKey] = useState("1")
+
+    const [visible, setVisible] = useState(false);
+    const [imageSrc, setImageSrc] = useState<string | undefined>(undefined);
 
     const goBack = () => {
         navigate(-1)
@@ -110,6 +112,12 @@ const AndtDemo = () => {
         'P',
         'Q',
     ]
+
+    const demoSrc =
+        'https://images.unsplash.com/photo-1567945716310-4745a6b7844b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=60'
+    const demoSrc2 =
+        'https://images.unsplash.com/photo-1620476214170-1d8080f65cdb?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=3150&q=80'
+
 
     return (
         <div className="andtDemo">
@@ -279,13 +287,42 @@ const AndtDemo = () => {
                 <Ellipsis content={content} rows={2} direction={"end"}/>
             </div>
 
-            <FloatingPanel anchors={anchors}>
-                <List>
-                    {floatingData.map(item => {
-                        return <ListItem>{item}</ListItem>
-                    })}
-                </List>
-            </FloatingPanel>
+            {/*<FloatingPanel anchors={anchors}>*/}
+            {/*    <List>*/}
+            {/*        {floatingData.map(item => {*/}
+            {/*            return <ListItem>{item}</ListItem>*/}
+            {/*        })}*/}
+            {/*    </List>*/}
+            {/*</FloatingPanel>*/}
+
+            <Space>
+                <Image src={demoSrc}/>
+
+            </Space>
+
+            <Space wrap={true}>
+                <Image src={demoSrc} width={100} height={100} fit={"fill"} style={{borderRadius: "8%"}}
+                       onClick={() => {
+                           setImageSrc(demoSrc);
+                           setVisible(true)
+                       }}
+                />
+                <Image src={demoSrc} width={100} height={100} fit={"contain"} style={{borderRadius: "8%"}}/>
+                <Image src={demoSrc} width={100} height={100} fit={"cover"} style={{borderRadius: "8%"}}/>
+                <Image src={demoSrc} width={100} height={100} fit={"scale-down"} style={{borderRadius: "8%"}}/>
+                <Image src={demoSrc} width={100} height={100} fit={"none"} style={{borderRadius: "8%"}}/>
+                <Image src={"/404"} width={100} height={100} fit={"none"} style={{borderRadius: "8%"}} alt={"xxxx.png"}
+                       fallback={"x.png"}/>
+            </Space>
+
+            <Space wrap={true}>
+                <Image lazy={true} src={demoSrc2}/>
+            </Space>
+
+            <ImageViewer classNames={{
+                mask: 'customize-mask',
+                body: 'customize-body'
+            }} image={imageSrc} visible={visible} onClose={() => setVisible(false)}></ImageViewer>
 
 
             <SafeArea position={"bottom"}/>
