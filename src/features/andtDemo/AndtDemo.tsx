@@ -9,7 +9,9 @@ import {
     Divider,
     DotLoading,
     Ellipsis,
+    FloatingPanel,
     Grid,
+    List,
     NavBar,
     SafeArea,
     Space,
@@ -34,6 +36,7 @@ import {GridItem} from "antd-mobile/es/components/grid/grid";
 import {useState} from "react";
 import {TabBarItem} from "antd-mobile/es/components/tab-bar/tab-bar";
 import {CollapsePanel} from "antd-mobile/es/components/collapse/collapse";
+import {ListItem} from "antd-mobile/es/components/list/list-item";
 
 
 const AndtDemo = () => {
@@ -86,6 +89,27 @@ const AndtDemo = () => {
 
     const content =
         '蚂蚁的企业级产品是一个庞大且复杂的体系。这类产品不仅量级巨大且功能复杂，而且变动和并发频繁，常常需要设计与开发能够快速的做出响应。同时这类产品中有存在很多类似的页面以及组件，可以通过抽象得到一些稳定且高复用性的内容。蚂蚁的企业级产品是一个庞大且复杂的体系。这类产品不仅量级巨大且功能复杂，而且变动和并发频繁，常常需要设计与开发能够快速的做出响应。同时这类产品中有存在很多类似的页面以及组件，可以通过抽象得到一些稳定且高复用性的内容。'
+
+    const anchors = [window.innerHeight * 0.1, window.innerHeight * 0.1, window.innerHeight * 0.9];
+    const floatingData = [
+        'A',
+        'B',
+        'C',
+        'D',
+        'E',
+        'F',
+        'G',
+        'H',
+        'I',
+        'J',
+        'K',
+        'L',
+        'M',
+        'N',
+        'O',
+        'P',
+        'Q',
+    ]
 
     return (
         <div className="andtDemo">
@@ -254,6 +278,14 @@ const AndtDemo = () => {
                 <Ellipsis content={content} direction={"middle"}/>
                 <Ellipsis content={content} rows={2} direction={"end"}/>
             </div>
+
+            <FloatingPanel anchors={anchors}>
+                <List>
+                    {floatingData.map(item => {
+                        return <ListItem>{item}</ListItem>
+                    })}
+                </List>
+            </FloatingPanel>
 
 
             <SafeArea position={"bottom"}/>
