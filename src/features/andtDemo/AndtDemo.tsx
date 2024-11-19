@@ -12,6 +12,8 @@ import {
     Grid,
     Image,
     ImageViewer,
+    InfiniteScroll,
+    List,
     NavBar,
     SafeArea,
     Space,
@@ -36,7 +38,10 @@ import {GridItem} from "antd-mobile/es/components/grid/grid";
 import {useState} from "react";
 import {TabBarItem} from "antd-mobile/es/components/tab-bar/tab-bar";
 import {CollapsePanel} from "antd-mobile/es/components/collapse/collapse";
+import {useRafState} from "ahooks";
+import {ListItem} from "antd-mobile/es/components/list/list-item";
 
+let count = 0;
 
 const AndtDemo = () => {
     const navigate = useNavigate();
@@ -92,32 +97,51 @@ const AndtDemo = () => {
     const content =
         '蚂蚁的企业级产品是一个庞大且复杂的体系。这类产品不仅量级巨大且功能复杂，而且变动和并发频繁，常常需要设计与开发能够快速的做出响应。同时这类产品中有存在很多类似的页面以及组件，可以通过抽象得到一些稳定且高复用性的内容。蚂蚁的企业级产品是一个庞大且复杂的体系。这类产品不仅量级巨大且功能复杂，而且变动和并发频繁，常常需要设计与开发能够快速的做出响应。同时这类产品中有存在很多类似的页面以及组件，可以通过抽象得到一些稳定且高复用性的内容。'
 
-    const anchors = [window.innerHeight * 0.1, window.innerHeight * 0.1, window.innerHeight * 0.9];
-    const floatingData = [
-        'A',
-        'B',
-        'C',
-        'D',
-        'E',
-        'F',
-        'G',
-        'H',
-        'I',
-        'J',
-        'K',
-        'L',
-        'M',
-        'N',
-        'O',
-        'P',
-        'Q',
-    ]
+    // const anchors = [window.innerHeight * 0.1, window.innerHeight * 0.1, window.innerHeight * 0.9];
+    // const floatingData = [
+    //     'A',
+    //     'B',
+    //     'C',
+    //     'D',
+    //     'E',
+    //     'F',
+    //     'G',
+    //     'H',
+    //     'I',
+    //     'J',
+    //     'K',
+    //     'L',
+    //     'M',
+    //     'N',
+    //     'O',
+    //     'P',
+    //     'Q',
+    // ]
 
     const demoSrc =
         'https://images.unsplash.com/photo-1567945716310-4745a6b7844b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=60'
     const demoSrc2 =
         'https://images.unsplash.com/photo-1620476214170-1d8080f65cdb?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=3150&q=80'
 
+    const [listData, setListData] = useRafState<string[]>([])
+    const [hasMore, setHasMore] = useState<boolean>(true)
+
+    const loadMore = async () => {
+        if (count >= 3) {
+            setHasMore(false)
+            return
+        }
+        await sleep(2000);
+        count++;
+        setListData(data => [...data, ...['A', 'B', 'C', 'D', 'E', 'F']]);
+        setHasMore(true)
+    }
+
+    const InfiniteScrollContent = ({hasMore}: { hasMore?: boolean }) => {
+        return <>
+            {hasMore ? (<><span>loading</span><DotLoading/></>) : (<span>---- 我是有底线的 ----</span>)}
+        </>
+    }
 
     return (
         <div className="andtDemo">
@@ -324,6 +348,14 @@ const AndtDemo = () => {
                 body: 'customize-body'
             }} image={imageSrc} visible={visible} onClose={() => setVisible(false)}></ImageViewer>
 
+            <List>
+                {listData?.map(item => {
+                    return <ListItem>{item}</ListItem>
+                })}
+            </List>
+            <InfiniteScroll loadMore={loadMore} hasMore={hasMore}>
+                <InfiniteScrollContent hasMore={hasMore}></InfiniteScrollContent>
+            </InfiniteScroll>
 
             <SafeArea position={"bottom"}/>
         </div>
