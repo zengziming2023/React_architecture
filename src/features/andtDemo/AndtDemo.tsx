@@ -348,9 +348,12 @@ const AndtDemo = () => {
                 body: 'customize-body'
             }} image={imageSrc} visible={visible} onClose={() => setVisible(false)}></ImageViewer>
 
-            <List>
+            <List className={'list'}>
                 {listData?.map(item => {
-                    return <ListItem>{item}</ListItem>
+                    return <ListItem className={'listItem'} prefix={<UnorderedListOutline/>} onClick={() => {
+                        console.log(item)
+                    }} arrowIcon={item == 'A'} title={'xxx'} description={'description'}><span
+                        className={'span'}>{item}</span></ListItem>
                 })}
             </List>
             <InfiniteScroll loadMore={loadMore} hasMore={hasMore}>
