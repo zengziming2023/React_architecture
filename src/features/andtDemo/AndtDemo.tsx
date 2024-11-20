@@ -15,6 +15,7 @@ import {
     InfiniteScroll,
     List,
     NavBar,
+    PageIndicator,
     SafeArea,
     Space,
     TabBar,
@@ -127,7 +128,7 @@ const AndtDemo = () => {
     const [hasMore, setHasMore] = useState<boolean>(true)
 
     const loadMore = async () => {
-        if (count >= 3) {
+        if (count >= 1) {
             setHasMore(false)
             return
         }
@@ -352,13 +353,16 @@ const AndtDemo = () => {
                 {listData?.map(item => {
                     return <ListItem className={'listItem'} prefix={<UnorderedListOutline/>} onClick={() => {
                         console.log(item)
-                    }} arrowIcon={item == 'A'} title={'xxx'} description={'description'}><span
+                    }} arrowIcon={item == 'A'} title={'xxx'} description={'description'} extra={'右侧的数据'}><span
                         className={'span'}>{item}</span></ListItem>
                 })}
             </List>
             <InfiniteScroll loadMore={loadMore} hasMore={hasMore}>
                 <InfiniteScrollContent hasMore={hasMore}></InfiniteScrollContent>
             </InfiniteScroll>
+
+            <PageIndicator className={'pageIndicator'} total={4} current={1}/>
+
 
             <SafeArea position={"bottom"}/>
         </div>
