@@ -21,7 +21,8 @@ import {
     Steps,
     TabBar,
     Tag,
-    Toast
+    Toast,
+    WaterMark
 } from "antd-mobile";
 import "./andt_demo.less"
 import {useNavigate} from "react-router-dom";
@@ -381,6 +382,12 @@ const AndtDemo = () => {
                     console.log('click tag.')
                 }}>round</Tag>
             </Space>
+
+            <WaterMark
+                content={'watermark'}
+                gapX={12}
+                gapY={14}
+            ></WaterMark>
 
 
             <SafeArea position={"bottom"}/>
