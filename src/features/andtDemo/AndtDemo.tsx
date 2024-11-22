@@ -18,6 +18,7 @@ import {
     PageIndicator,
     SafeArea,
     Space,
+    Steps,
     TabBar,
     Toast
 } from "antd-mobile";
@@ -41,6 +42,7 @@ import {TabBarItem} from "antd-mobile/es/components/tab-bar/tab-bar";
 import {CollapsePanel} from "antd-mobile/es/components/collapse/collapse";
 import {useRafState} from "ahooks";
 import {ListItem} from "antd-mobile/es/components/list/list-item";
+import {Step} from "antd-mobile/es/components/steps/step";
 
 let count = 0;
 
@@ -362,6 +364,14 @@ const AndtDemo = () => {
             </InfiniteScroll>
 
             <PageIndicator className={'pageIndicator'} total={4} current={1}/>
+
+            <div >
+                <Steps direction={"vertical"} current={1} className={'steps'}>
+                    <Step className={'step'} title={'step1'} description={'desc1'}></Step>
+                    <Step title={'step2'} description={'desc2'} status={'process'}></Step>
+                    <Step title={'step3'} description={'desc3'} status={'error'}></Step>
+                </Steps>
+            </div>
 
 
             <SafeArea position={"bottom"}/>
