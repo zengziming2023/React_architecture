@@ -9,6 +9,7 @@ import {
     Divider,
     DotLoading,
     Ellipsis,
+    Footer,
     Grid,
     Image,
     ImageViewer,
@@ -383,12 +384,14 @@ const AndtDemo = () => {
                 }}>round</Tag>
             </Space>
 
-            <WaterMark
-                content={'watermark'}
-                gapX={12}
-                gapY={14}
-            ></WaterMark>
+            {/*<WaterMark*/}
+            {/*    content={'watermark'}*/}
+            {/*    gapX={12}*/}
+            {/*    gapY={14}*/}
+            {/*></WaterMark>*/}
 
+            <Footer label={'没有更多了。'}/>
+            <Footer content={'有内容的Footer.'}/>
 
             <SafeArea position={"bottom"}/>
         </div>
