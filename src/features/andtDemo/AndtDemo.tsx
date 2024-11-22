@@ -20,6 +20,7 @@ import {
     Space,
     Steps,
     TabBar,
+    Tag,
     Toast
 } from "antd-mobile";
 import "./andt_demo.less"
@@ -365,13 +366,21 @@ const AndtDemo = () => {
 
             <PageIndicator className={'pageIndicator'} total={4} current={1}/>
 
-            <div >
+            <div>
                 <Steps direction={"vertical"} current={1} className={'steps'}>
                     <Step className={'step'} title={'step1'} description={'desc1'}></Step>
                     <Step title={'step2'} description={'desc2'} status={'process'}></Step>
                     <Step title={'step3'} description={'desc3'} status={'error'}></Step>
                 </Steps>
             </div>
+
+            <Space wrap={true}>
+                <Tag color={'primary'} fill={'outline'}>primary</Tag>
+                <Tag color={'default'} fill={'solid'}>default solid</Tag>
+                <Tag color={'warning'} fill={'outline'} round={true} onClick={() => {
+                    console.log('click tag.')
+                }}>round</Tag>
+            </Space>
 
 
             <SafeArea position={"bottom"}/>
